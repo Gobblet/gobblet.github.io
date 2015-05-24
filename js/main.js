@@ -1,3 +1,4 @@
+var turns = 0;
 var radius = 0;
 var isSelected = false;
 var boardAll = [[[null, null, null, null], [null, null, null, null], [null, null, null, null], [null, null, null, null]],
@@ -152,17 +153,18 @@ if(isSelected){
         boardAll[3][3][radius] = true;
       }
       isSelected = false;
+      turns++;
     } else {
-      if(99 < mouseX && mouseX < 199 && 50 < mouseY && mouseY < 150) {        
+      if(99 < mouseX && mouseX < 199 && 50 < mouseY && mouseY < 150 ) {        
         isSelected = true;
         radius = 4;
-      } else if (199 < mouseX && mouseX < 299 && 50 < mouseY && mouseY < 150) {        
+      } else if (199 < mouseX && mouseX < 299 && 50 < mouseY && mouseY < 150 && turns >= 1) {        
         isSelected = true;
         radius = 3;
-      } else if(299 < mouseX && mouseX < 399 && 50 < mouseY && mouseY < 150) {        
+      } else if(299 < mouseX && mouseX < 399 && 50 < mouseY && mouseY < 150 && turns >= 2) {        
         isSelected = true;
         radius = 2;
-      } else if(399 < mouseX && mouseX < 499 && 50 < mouseY && mouseY < 150) {        
+      } else if(399 < mouseX && mouseX < 499 && 50 < mouseY && mouseY < 150 && turns >= 3) {        
         isSelected = true;
         radius = 1;
       } else {
