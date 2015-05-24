@@ -1,7 +1,5 @@
-var clicks = -1;
-var radius = 4;
+var radius = 0;
 var isSelected = false;
-
 var boardAll = [[[null, null, null, null], [null, null, null, null], [null, null, null, null], [null, null, null, null]],
                 [[null, null, null, null], [null, null, null, null], [null, null, null, null], [null, null, null, null]],
                 [[null, null, null, null], [null, null, null, null], [null, null, null, null], [null, null, null, null]],
@@ -46,13 +44,15 @@ window.onload = function draw(){
   var p2Col = "#A30000";
 
   //the top left circle
-  drawCircle(150,100,4,p1Col);
-  drawCircle(300,100,4,p1Col);
-  drawCircle(450,100,4,p1Col);
+  drawCircle(149,100,4,p1Col);
+  drawCircle(249,100,3,p1Col);
+  drawCircle(349,100,2,p1Col);
+  drawCircle(449,100,1,p1Col);
    //#A30000 p2 red
-  drawCircle(150,650,4,p2Col);
-  drawCircle(300,650,4,p2Col);
-  drawCircle(450,650,4,p2Col);
+  drawCircle(149,650,4,p2Col);
+  drawCircle(249,650,3,p2Col);
+  drawCircle(349,650,2,p2Col);
+  drawCircle(449,650,1,p2Col);
 
 
   function drawCircle(x,y,size,hexColor){
@@ -71,10 +71,6 @@ window.onload = function draw(){
     //alert(mouseX + " " + mouseY);
 
 if(isSelected){
-  clicks++;
-    if(clicks % 3 == 0){
-      radius -= (clicks / 3);
-    }
   //square 0, 0
       if(99 <= mouseX && mouseX <= 199&& 174 <= mouseY && mouseY <= 274){
         drawCircle(149,224,radius,p1Col);
@@ -157,8 +153,18 @@ if(isSelected){
       }
       isSelected = false;
     } else {
-      if(99 < mouseX && mouseX < 499 && 50 < mouseY && mouseY < 150) {        
+      if(99 < mouseX && mouseX < 199 && 50 < mouseY && mouseY < 150) {        
         isSelected = true;
+        radius = 4;
+      } else if (199 < mouseX && mouseX < 299 && 50 < mouseY && mouseY < 150) {        
+        isSelected = true;
+        radius = 3;
+      } else if(299 < mouseX && mouseX < 399 && 50 < mouseY && mouseY < 150) {        
+        isSelected = true;
+        radius = 2;
+      } else if(399 < mouseX && mouseX < 499 && 50 < mouseY && mouseY < 150) {        
+        isSelected = true;
+        radius = 1;
       } else {
         //square 0, 0
             if((99 < mouseX && mouseX < 199) && (174 < mouseY && mouseY < 274) && (boardAll[0][0][radius] != null)) {
@@ -205,24 +211,24 @@ if(isSelected){
               drawCircle(349,424,radius-0.5, "#0000FF");
             }
         //square 3, 2
-            //if(399 < mouseX && mouseX < 499 && 374 < mouseY && mouseY < 474 && boardAll[3][2][radius] != null){
-              //drawCircle(449,424,radius-0.5, "#0000FF";
-            //}
+            if(399 < mouseX && mouseX < 499 && 374 < mouseY && mouseY < 474 && boardAll[3][2][radius] != null){
+              drawCircle(449,424,radius-0.5, "#0000FF");
+            }
         //square 0, 3
             if(99 < mouseX  && mouseX< 199 && 474 < mouseY  && mouseY< 574 && boardAll[0][3][radius] != null){
-              //drawCircle(149,524,radius-0.5, "#0000FF");
+              drawCircle(149,524,radius-0.5, "#0000FF");
             }
         //square 1, 3
             if(199 < mouseX && mouseX < 299 && 474 < mouseY && mouseY < 574 && boardAll[1][3][radius] != null){
-               //drawCircle(249,524,radius-0.5, "#0000FF");
+               drawCircle(249,524,radius-0.5, "#0000FF");
             }
         //square 2, 3
             if(299 < mouseX && mouseX < 399 && 474 < mouseY && mouseY < 574 && boardAll[2][3][radius] != null){
-              //drawCircle(349,524,radius-0.5, "#0000FF");
+              drawCircle(349,524,radius-0.5, "#0000FF");
             }
         //square 3, 3
             if(399 < mouseX && mouseX < 499 && 474 < mouseY  && mouseY< 574 && boardAll[3][3][radius] != null){
-              //drawCircle(449,524,radius-0.5, "#0000FF");
+              drawCircle(449,524,radius-0.5, "#0000FF");
             }
       }
     }
